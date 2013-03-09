@@ -32,10 +32,13 @@
                 <p class="event received">Device is Ready</p>
             </div>
         </div>
-		<input type="submit" value="Submit" onclick="app.getGeoLoc();" >
+		<input id="geoBut" type="submit" value="Submit" >
 		<p id="geolocation">Nowhere..</p>
 		
+		<p id="info">Scan info</p>
+		
         <script type="text/javascript" src="cordova-2.5.0.js"></script>
+		<script src="barcodescanner.js"></script>
         <script type="text/javascript" src="index.js"></script>
         <script type="text/javascript">
             app.initialize();

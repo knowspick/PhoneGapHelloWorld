@@ -10,7 +10,7 @@ var app = {
     // 'load', 'deviceready', 'offline', and 'online'.
     bindEvents: function() {
         document.addEventListener('deviceready', this.onDeviceReady, false);
-		
+		document.getElementById("geoBut").addEventListener('click', this.scan, false);
     },
     // deviceready Event Handler
     //
@@ -31,9 +31,12 @@ var app = {
         console.log('Received Event: ' + id);
     },
 	
-	getGeoLoc: function () {
+	getGeoLoc: function (that) {
+		var element = document.getElementById('geolocation');
+		element.innerHTML = 'Getting location';
 		navigator.geolocation.getCurrentPosition(this.onGeoSuccess, this.onGeoError);
 	},
+	
 	// onSuccess Geolocation
     //
     onGeoSuccess: function (position) {
@@ -51,7 +54,30 @@ var app = {
     // onError Callback receives a PositionError object
     //
     onGeoError: function (error) {
+		var element = document.getElementById('geolocation');
+		element.innerHTML = 'Error';	
         alert('code: '    + error.code    + '\n' +
                 'message: ' + error.message + '\n');
+    },
+	
+	scan: function() {
+        console.log('scanning');
+        try {
+            window.plugins.barcodeScanner.scan(function(args) {
+                var str = "Scanner result: \n" +
+                    "text: " + args.text + "\n" +
+                    "format: " + args.format + "\n" +
+                    "cancelled: " + args.cancelled + "\n";
+                /*
+                if (args.format == "QR_CODE") {
+                    window.plugins.childBrowser.showWebPage(args.text, { showLocationBar: false });
+                }
+                */
+                document.getElementById("info").innerHTML = str;
+        });
+        } catch (ex) {
+            document.getElementById("info").innerHTML = "err: " + ex.message;
+        }
     }
+	
 };
