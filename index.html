@@ -22,7 +22,6 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <meta name="format-detection" content="telephone=no" />
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
-        <link rel="stylesheet" type="text/css" href="css/index.css" />
         <title>Hello World</title>
     </head>
     <body>
@@ -33,9 +32,10 @@
                 <p class="event received">Device is Ready</p>
             </div>
         </div>
-		<p id="geolocation">Finding geolocation...</p>
+		<input type="submit" value="Submit" onclick="app.getGeoLoc();" >
+		<p id="geolocation">Nowhere..</p>
 		
-        <script type="text/javascript" src="cordova-2.4.0.js"></script>
+        <script type="text/javascript" src="cordova-2.5.0.js"></script>
         <script type="text/javascript" src="index.js"></script>
         <script type="text/javascript">
             app.initialize();

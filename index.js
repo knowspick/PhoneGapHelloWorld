@@ -10,7 +10,7 @@ var app = {
     // 'load', 'deviceready', 'offline', and 'online'.
     bindEvents: function() {
         document.addEventListener('deviceready', this.onDeviceReady, false);
-		navigator.geolocation.getCurrentPosition(this.onSuccess, this.onError);
+		
     },
     // deviceready Event Handler
     //
@@ -31,9 +31,12 @@ var app = {
         console.log('Received Event: ' + id);
     },
 	
+	getGeoLoc: function () {
+		navigator.geolocation.getCurrentPosition(this.onGeoSuccess, this.onGeoError);
+	},
 	// onSuccess Geolocation
     //
-    onSuccess: function (position) {
+    onGeoSuccess: function (position) {
         var element = document.getElementById('geolocation');
         element.innerHTML = 'Latitude: '           + position.coords.latitude              + '<br />' +
                             'Longitude: '          + position.coords.longitude             + '<br />' +
@@ -47,7 +50,7 @@ var app = {
 
     // onError Callback receives a PositionError object
     //
-    onError: function (error) {
+    onGeoError: function (error) {
         alert('code: '    + error.code    + '\n' +
                 'message: ' + error.message + '\n');
     }
