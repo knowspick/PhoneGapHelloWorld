@@ -10,7 +10,8 @@ var app = {
     // 'load', 'deviceready', 'offline', and 'online'.
     bindEvents: function() {
         document.addEventListener('deviceready', this.onDeviceReady, false);
-		document.getElementById("geoBut").addEventListener('click', this.scan, false);
+		document.getElementById("geoBut").addEventListener('click', this.getGeoLoc, false);
+		document.getElementById("scanBut").addEventListener('click', this.scan, false);
     },
     // deviceready Event Handler
     //
