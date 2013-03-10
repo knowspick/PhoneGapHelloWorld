@@ -32,16 +32,16 @@ var app = {
         console.log('Received Event: ' + id);
     },
 	
-	getGeoLoc: function (that) {
-		var element = document.getElementById('geolocation');
+	getGeoLoc: function () {
+		var element = document.getElementById('geolocationtxt');
 		element.innerHTML = 'Getting location';
-		navigator.geolocation.getCurrentPosition(this.onGeoSuccess, this.onGeoError);
+		navigator.geolocation.getCurrentPosition(app.onGeoSuccess, app.onGeoError);
 	},
 	
 	// onSuccess Geolocation
     //
     onGeoSuccess: function (position) {
-        var element = document.getElementById('geolocation');
+        var element = document.getElementById('geolocationtxt');
         element.innerHTML = 'Latitude: '           + position.coords.latitude              + '<br />' +
                             'Longitude: '          + position.coords.longitude             + '<br />' +
                             'Altitude: '           + position.coords.altitude              + '<br />' +
@@ -55,7 +55,7 @@ var app = {
     // onError Callback receives a PositionError object
     //
     onGeoError: function (error) {
-		var element = document.getElementById('geolocation');
+		var element = document.getElementById('geolocationtxt');
 		element.innerHTML = 'Error';	
         alert('code: '    + error.code    + '\n' +
                 'message: ' + error.message + '\n');
